@@ -13,7 +13,9 @@
         </ul>
         <script>
             let id = Date.now()
-            let ws = new WebSocket(`ws://localhost:8000/websocket/ws/` + id)
+            let href = window.location
+            let path = href.host + href.pathname
+            let ws = new WebSocket(`ws://` + path + `ws/` + id)
             ws.onmessage = function(event) {
                 let messages = document.querySelector("#messages")
                 let message = document.createElement("li")
